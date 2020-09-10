@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+User.destroy_all
+Todo.destroy_all
+
+
+#USERS <----------------
+
+ max = User.create({
+    name: 'Max'
+})
+
+testToDO = Todo.create({
+    title: 'Groceries', todoItem: 
+})

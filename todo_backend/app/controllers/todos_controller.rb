@@ -1,8 +1,8 @@
 class ToDoController < ApplicationController
 
     def index
-        list = ToDo.all
-        render json: list
+        todos = ToDo.all
+        render json: todos
     end
 
     def create
