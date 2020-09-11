@@ -2,7 +2,7 @@ class ToDosController < ApplicationController
 
     def index
         todos = ToDo.all
-        render json: todos
+        render json: todos, methods: [ :user ] # this allows to also have the user information ( name and id )
     end
 
     def create

@@ -6,7 +6,7 @@ function App() {
 
   return (
     <div>
-      this is the app Component
+    
       <Main/>
     </div>
   );
