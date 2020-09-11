@@ -16,6 +16,12 @@ ToDo.destroy_all
  max = User.create({
     name: 'Max'
 })
+maria = User.create({
+    name: 'Maria'
+})
+matthew = User.create({
+    name: 'Matthew'
+})
 
 testToDO = ToDo.create({
     title: 'Groceries', todo_item: 'Buy: Milk, Eggs, and Butter', user_id: max.id

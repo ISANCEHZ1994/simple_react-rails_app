@@ -1,4 +1,4 @@
-class ToDoController < ApplicationController
+class ToDosController < ApplicationController
 
     def index
         todos = ToDo.all
@@ -7,7 +7,7 @@ class ToDoController < ApplicationController
 
     def create
         list = ToDo.new(todo_params)
-        render json: {id: list.id, nameOfList:list.title, listItem:list.todo_item }
+        render json: { id: list.id, nameOfList:list.title, listItem:list.todo_item }
     end
 
     def update
