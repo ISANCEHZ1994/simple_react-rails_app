@@ -8,7 +8,7 @@
 
 
 User.destroy_all
-Todo.destroy_all
+ToDo.destroy_all
 
 
 #USERS <----------------
@@ -17,6 +17,8 @@ Todo.destroy_all
     name: 'Max'
 })
 
-testToDO = Todo.create({
-    title: 'Groceries', todoItem: 
+testToDO = ToDo.create({
+    title: 'Groceries', todo_item: 'Buy: Milk, Eggs, and Butter', user_id: max.id
 })
+
+puts 'we seeded!!'
