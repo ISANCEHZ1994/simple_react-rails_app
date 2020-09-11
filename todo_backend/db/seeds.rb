@@ -27,4 +27,14 @@ testToDO = ToDo.create({
     title: 'Groceries', todo_item: 'Buy: Milk, Eggs, and Butter', user_id: max.id
 })
 
+testToDO2 = ToDo.create({
+    title: 'Wash Car', todo_item: 'Use: Soap, Tire Wash, and Rain-X', user_id: matthew.id
+})
+
+testToDO3 = ToDo.create({
+    title: 'Clean House', todo_item: 'Clean: ONLY the first floor', user_id: maria.id
+})
+
+
+
 puts 'we seeded!!'
