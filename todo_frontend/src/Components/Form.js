@@ -4,21 +4,6 @@ import React from 'react';
 
 export default function Form(props){
 
-    // const [state, setState] = React.useState({
-    //     name: "",
-    //     title: "",
-    //     item:""
-    //   });
-
-    // function handleChange(e) {
-    //     const value = e.target.value;
-    //     setState({
-    //       ...state,
-    //       [e.target.name]: value
-    //     });
-    //   };
-    //   console.log(state.name)
-
     return(
         <form onSubmit={(e) => props.newUser(e)}>
                 <label> Name:

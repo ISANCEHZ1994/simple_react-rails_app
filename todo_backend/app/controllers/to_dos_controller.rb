@@ -6,16 +6,23 @@ class ToDosController < ApplicationController
     end
 
     def create
-        list = ToDo.new(todo_params)
+        
+        list = ToDo.create(todo_params)
         render json: { id: list.id, nameOfList:list.title, listItem:list.todo_item }
     end
 
-    def update
-
+    def todo_params
+        params.require(:to_dos).permit(:title, :todo_item, :user_id)
     end
 
-    def show
+    # user_id: @user.id
 
-    end
+    # def update
+
+    # end
+
+    # def show
+
+    # end
 
 end

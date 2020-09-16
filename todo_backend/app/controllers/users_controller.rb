@@ -6,9 +6,17 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(user_params)
-        render json: { id: user.id, name: user.name }
+        Byebug
+
+        user = User.create( user_params )
+        ToDo.create( todo_params )
+        render json: { id: user.id, name: user.name }, methods: [ :to_dos ] 
     end
+
+    def user_params
+        params.require(:user).permit(:name, :to_dos_id)
+    end
+    
 
     def update
 

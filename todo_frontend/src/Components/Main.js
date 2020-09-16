@@ -40,16 +40,34 @@ export default class Main extends React.Component{
 
     createNewUser = (e) => {
         e.preventDefault()
-    //     fetch(userURL,{
-    //         method: 'POST',
-    //         headers: { // meta-data: is data about data
-    //             'Content-type' : 'application/json'
-    //         },
-    //         body: JSON.stringify({ 
-                
-    //         })
-    //     })
-    //    debugger
+
+        const newName = this.state.name
+        const newTitle = this.state.title
+        const newItem = this.state.item
+        
+        const data = {
+            name: newName,
+            to_dos: {
+                title: newTitle,
+                todo_item: newItem
+            } 
+        };
+        
+        fetch(userURL,{
+            method: 'POST',
+            headers: { // meta-data: is data about data
+                'Content-type' : 'application/json'
+            },
+            body: JSON.stringify(data
+                // "user":{
+                    // name: newName,
+                    //     to_dos: {
+                    //         title: newTitle,
+                    //         todo_item: newItem
+                    //     } // closes to_dos
+                // } // closes user
+            )// closes 
+        })
     }
 
     formContainer = () => {
