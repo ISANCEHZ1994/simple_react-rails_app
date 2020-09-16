@@ -1,75 +1,90 @@
 import React from 'react';
 import TodoCard from './TodoCard';
+import Form from './Form';
 
-// const userURL = 'http://localhost:3000/users'
-const listURL = 'http://localhost:3000/to_dos'
+const userURL = 'http://localhost:3000/users'
 
 export default class Main extends React.Component{
 
     state={
-        list: [],
-        buttonPress: false
+        users: [],
+        buttonPress: false,
+        name:'',
+        title:'',
+        item:''
     }
 
     componentDidMount(){
-        fetch(listURL)
+        fetch(userURL)
         .then( resp => resp.json() )
-        .then( todo => {
+        .then( users => {
             this.setState({
-                list: todo
+                users
             })
         })
     };
 
-    creatingNewTodo = () => {
-        
-    };
-
+    handleChange = (e) => { 
+        const value = e.target.value
+        this.setState({
+            ...this.state,
+            [e.target.name]: value // note: e.target.name will use the name of the inputs used inside the Form Component
+        })
+    }
+    
     clickButton = () => {
         this.setState({
-            buttonPress: !this.state.buttonPress
+            buttonPress: !this.state.buttonPress 
         })
     };
 
-    formContainer = () => {
-        if(this.state.buttonPress == true){
-           return(
-           <div>
-               <form>
-                <label> Name:
-                    <input type="text" name="name" />
-                </label>
-                <label> Title of ToDo:
-                    <input type='text' name='title'/>
-                </label>
-                <label> ToDo Item:
-                    <input type='text' name='todo-item'/>
-                </label>
+    createNewUser = (e) => {
+        e.preventDefault()
+    //     fetch(userURL,{
+    //         method: 'POST',
+    //         headers: { // meta-data: is data about data
+    //             'Content-type' : 'application/json'
+    //         },
+    //         body: JSON.stringify({ 
+                
+    //         })
+    //     })
+    //    debugger
+    }
 
-                <button type='submit'> Create ToDo! </button>
-               </form>
-            </div>
+    formContainer = () => {
+        if(this.state.buttonPress == true){  // this allows us to show the Form Component
+           return(
+           <Form
+           handleChange={this.handleChange}
+           newUser={this.createNewUser}
+           name={this.state.name}
+           title={this.state.title}
+           item={this.state.item}
+           />
             ) 
         }
     };
 
+    
+
     render(){
-        const list = this.state.list
-       list.map( todo => console.log(todo))
+        const users = this.state.users
+    //  users.map( user => console.log(user.to_dos[0].todo_item))
+   
         return(
-            
             <div>
-                    <h1 style={{textAlign:'center'}}> Make A ToDo List </h1>
-                {list.map( card  => {
-                   return <TodoCard
-                    name={card.user.name}
-                    id={card.id}
-                    key={card.id}
-                    title={card.title}
-                    userID={card.user_id}
-                    description={card.todo_item}
-                    />
-                })}
+                <h1 style={{textAlign:'center'}}> Make A ToDo List </h1>
+                    {users.map( card  => {
+                    return <TodoCard
+                        name={card.name}
+                        id={card.id}
+                        key={card.id}
+                        title={card.to_dos[0].title}
+                        userID={card.to_dos[0].user_id}
+                        description={card.to_dos[0].todo_item}
+                        />
+                    })}
                 <br></br>
                 <button onClick={this.clickButton}> Want to create a list? </button> 
                 {this.formContainer()}
