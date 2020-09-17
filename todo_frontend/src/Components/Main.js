@@ -45,28 +45,21 @@ export default class Main extends React.Component{
         const newTitle = this.state.title
         const newItem = this.state.item
         
-        const data = {
-            name: newName,
-            to_dos: {
-                title: newTitle,
-                todo_item: newItem
-            } 
-        };
         
         fetch(userURL,{
             method: 'POST',
             headers: { // meta-data: is data about data
                 'Content-type' : 'application/json'
             },
-            body: JSON.stringify(data
-                // "user":{
-                    // name: newName,
-                    //     to_dos: {
-                    //         title: newTitle,
-                    //         todo_item: newItem
-                    //     } // closes to_dos
-                // } // closes user
-            )// closes 
+            body: JSON.stringify({
+                "user":{
+                    name: newName,
+                     
+                            title: newTitle,
+                            todo_item: newItem
+                    
+                } // closes user
+            })// closes 
         })
     }
 
